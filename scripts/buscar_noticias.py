@@ -241,6 +241,30 @@ def data_de(s):
     return d if d.tzinfo else d.replace(tzinfo=timezone.utc)
 
 
+PARADAS = set("a o as os de da do das dos e em no na nos nas para por com que um uma ao aos se sobre mais pela pelo".split())
+
+
+def palavras(t):
+    return {w for w in re.findall(r"[a-z0-9]+", norm(t)) if len(w) > 2 and w not in PARADAS}
+
+
+def parecido(a, b):
+    """Mesma notícia contada por veículos diferentes (títulos muito parecidos)."""
+    A, B = palavras(a), palavras(b)
+    if not A or not B:
+        return False
+    return len(A & B) / min(len(A), len(B)) >= 0.4
+
+
+def titulos_existentes():
+    out = []
+    for nome in os.listdir(POSTS):
+        m = re.search(r'^title:\s*"?(.*?)"?\s*$', open(os.path.join(POSTS, nome), encoding="utf-8").read(), re.M)
+        if m:
+            out.append(m.group(1))
+    return out
+
+
 def ids_existentes():
     ids = set()
     for nome in os.listdir(POSTS):
@@ -262,6 +286,7 @@ def main():
     existentes = ids_existentes()
     vistos_titulo = {n[11:-3][:50] for n in os.listdir(POSTS) if n.endswith(".md")}
     candidatos = []
+    titulos_ja = titulos_existentes()
     for fonte in cfg.get("fontes", []):
         try:
             dados = baixar(fonte["url"])
@@ -286,8 +311,9 @@ def main():
                 continue
             fid = hashlib.sha1(it["link"].encode()).hexdigest()[:16]
             chave_titulo = slug(titulo)[:50]
-            if fid in existentes or chave_titulo in vistos_titulo:
+            if fid in existentes or chave_titulo in vistos_titulo or any(parecido(titulo, t) for t in titulos_ja):
                 continue
+            titulos_ja.append(titulo)
             vistos_titulo.add(chave_titulo)
             candidatos.append(dict(it, titulo=titulo, resumo=resumo, veiculo=veiculo, data=d, id=fid))
 
