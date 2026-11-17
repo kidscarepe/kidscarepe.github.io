@@ -174,6 +174,14 @@ def salvar_foto(url_img, fid):
         return None
 
 
+def foto_repetida(fid):
+    """Mesma foto de outra notícia = mesma matéria publicada por outro veículo."""
+    def soma(caminho):
+        return hashlib.md5(open(caminho, "rb").read()).hexdigest()
+    alvo = soma(os.path.join(PASTA_FOTOS, fid + ".jpg"))
+    return any(soma(os.path.join(PASTA_FOTOS, n)) == alvo for n in os.listdir(PASTA_FOTOS) if n != fid + ".jpg")
+
+
 def enriquecer(it):
     """Completa a notícia com link real, foto e resumo da matéria original."""
     it["link"] = resolver_google(it["link"])
@@ -282,9 +290,14 @@ def main():
             candidatos.append(dict(it, titulo=titulo, resumo=resumo, veiculo=veiculo, data=d, id=fid))
 
     candidatos.sort(key=lambda x: x["data"], reverse=True)
-    novos = candidatos[: int(cfg.get("max_por_dia", 3))]
+    novos = candidatos[: int(cfg.get("max_por_dia", 3)) + 3]
+    publicados = 0
     for n, it in enumerate(novos):
         enriquecer(it)
+        if it.get("foto_local") and foto_repetida(it["id"]):
+            print("Notícia repetida (mesma foto de outra já publicada):", it["titulo"])
+            os.remove(os.path.join(PASTA_FOTOS, it["id"] + ".jpg"))
+            continue
         d = it["data"].astimezone(FUSO)
         resumo = it["resumo"]
         if len(resumo) > 280:
@@ -312,7 +325,10 @@ foto_tentativas: 1
         with open(os.path.join(POSTS, nome), "w", encoding="utf-8") as f:
             f.write(corpo)
         print("Nova notícia:", nome)
-    print(f"{len(novos)} notícia(s) nova(s).")
+        publicados += 1
+        if publicados >= int(cfg.get("max_por_dia", 3)):
+            break
+    print(f"{publicados} notícia(s) nova(s).")
     completar_antigas()
 
 
