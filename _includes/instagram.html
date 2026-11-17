@@ -8,6 +8,13 @@
   </div>
   {% if site.instagram_widget != "" %}
   <div class="insta__widget">{{ site.instagram_widget }}</div>
+  {% elsif site.instagram_posts and site.instagram_posts.size > 0 %}
+  <div class="insta__posts">
+    {% for link in site.instagram_posts limit: 3 %}
+    <blockquote class="instagram-media" data-instgrm-permalink="{{ link }}?utm_source=ig_embed" data-instgrm-version="14"><a href="{{ link }}" target="_blank" rel="noopener">Ver esta publicação no Instagram</a></blockquote>
+    {% endfor %}
+  </div>
+  <script async src="https://www.instagram.com/embed.js"></script>
   {% else %}
   <div class="insta__embed">
     <iframe src="https://www.instagram.com/{{ site.redes.instagram }}/embed/" loading="lazy" title="Feed do Instagram @{{ site.redes.instagram }}" scrolling="no" allowtransparency="true"></iframe>

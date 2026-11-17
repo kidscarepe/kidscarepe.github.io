@@ -9,8 +9,9 @@
     {% for u in site.data.unidades %}
     {%- capture q -%}{{ u.endereco }}, {{ u.bairro }}, {{ u.cep }}{%- endcapture -%}
     <article class="unidade">
-      <div class="unidade__mapa">
-        <iframe src="https://www.google.com/maps?q={{ q | url_encode }}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa da unidade {{ u.nome }}"></iframe>
+      <div class="unidade__foto">
+        {% if u.foto %}<img src="{{ u.foto | relative_url }}" alt="Fachada da unidade {{ u.nome }}" loading="lazy">
+        {% else %}<div class="unidade__semfoto"><img src="{{ site.logo | relative_url }}" alt=""><small>Foto da fachada em breve</small></div>{% endif %}
         <span class="unidade__num">{{ forloop.index }}</span>
       </div>
       <div class="unidade__corpo">

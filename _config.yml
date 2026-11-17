@@ -19,6 +19,8 @@ redes:
 # Cole aqui o código do widget gratuito (LightWidget, Behold, etc.).
 # Enquanto estiver vazio, aparece um cartão com link para o perfil.
 instagram_widget: ""
+# Ou cole os links de até 3 publicações para mostrar em destaque (grandes):
+instagram_posts: []
 
 # Categorias exibidas no menu
 categorias_menu:

@@ -1,7 +1,15 @@
 ---
 layout: default
 ---
-<section class="hero">
+{% assign agora = site.time | date: "%s" | minus: 86400 %}
+{% assign proximos = site.eventos | sort: "data" %}
+{% for e in proximos %}{% assign t = e.data | date: "%s" | plus: 0 %}{% if t >= agora %}
+<section class="container secao secao--topo">
+  {% include evento-card.html evento=e destaque=true %}
+</section>
+{% break %}{% endif %}{% endfor %}
+
+<section class="hero hero--depois">
   <div class="hero__luz" aria-hidden="true"></div>
   <div class="container">
     <div class="hero__cabeca">
@@ -34,14 +42,6 @@ layout: default
     {% endif %}
   </div>
 </section>
-
-{% assign agora = site.time | date: "%s" | minus: 86400 %}
-{% assign proximos = site.eventos | sort: "data" %}
-{% for e in proximos %}{% assign t = e.data | date: "%s" | plus: 0 %}{% if t >= agora %}
-<section class="container secao">
-  {% include evento-card.html evento=e destaque=true %}
-</section>
-{% break %}{% endif %}{% endfor %}
 
 <div class="container">
   <a class="ver-todas" href="{{ '/noticias/' | relative_url }}">

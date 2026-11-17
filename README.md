@@ -50,7 +50,7 @@ Quando esse campo está preenchido, o widget substitui a visualização padrão.
 
 ## 5b. Unidades
 
-As 3 unidades (endereço, telefone, mapa, WhatsApp e "Como chegar") ficam em `_data/unidades.yml`. Para mudar um endereço ou telefone, edite esse arquivo no GitHub (ícone do lápis).
+As 3 unidades (foto da fachada, endereço, telefone, WhatsApp e "Como chegar") ficam em `_data/unidades.yml`; as fotos ficam em `assets/img/unidades/`. Para mudar um endereço ou telefone, edite esse arquivo no GitHub (ícone do lápis).
 
 ## 6. Compartilhar nas redes
 
@@ -64,7 +64,7 @@ Cada notícia tem botões de **WhatsApp, Facebook, X, Telegram e Copiar link**. 
 
 ## 8. Notícias automáticas
 
-Todo dia às 8h (horário de Recife) um robô gratuito do GitHub (GitHub Actions) lê as fontes de notícias listadas em `_data/fontes.yml` e publica até 3 notícias novas sobre infância, desenvolvimento infantil, autismo, TDAH e saúde das crianças, na categoria **Na mídia**.
+Duas vezes por dia (8h e 18h, horário de Recife) um robô gratuito do GitHub (GitHub Actions) lê as fontes listadas em `_data/fontes.yml` e publica até 3 notícias novas por dia, **só de Pernambuco**, sobre autismo, TDAH, desenvolvimento infantil e inclusão, na categoria **Na mídia**. A lista de assuntos e de cidades fica no mesmo arquivo.
 
 - Cada notícia automática traz **título, resumo curto, a foto da matéria original e o link para ela**, com o nome do veículo. O texto completo não é copiado (respeita os direitos dos jornais).
 - **Mudar fontes, palavras-chave ou a quantidade por dia:** edite `_data/fontes.yml` direto no GitHub (ícone do lápis).

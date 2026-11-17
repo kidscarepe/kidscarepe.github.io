@@ -1,44 +1,73 @@
 # ==========================================================
-# NOTÍCIAS AUTOMÁTICAS
-# O robô roda 1x por dia, lê estas fontes e publica as notícias
-# novas que tenham alguma das palavras-chave. Cada notícia traz
-# só título + resumo curto + link para a matéria original.
+# NOTÍCIAS AUTOMÁTICAS — SÓ PERNAMBUCO
+# O robô roda 1x por dia e publica notícias novas que:
+#   1) falem de um dos ASSUNTOS abaixo, E
+#   2) citem um dos LOCAIS de Pernambuco abaixo (no título ou resumo).
+# Cada notícia traz só título + resumo + foto + link para a matéria original.
 # ==========================================================
 ativo: true
 max_por_dia: 3          # máximo de notícias automáticas publicadas por dia
-dias_max: 3             # ignora notícias mais antigas que isso
+dias_max: 7             # ignora notícias mais antigas que isso
 categoria: Na mídia
 
 palavras_chave:
-  - criança
-  - crianças
-  - infantil
-  - infância
-  - bebê
-  - bebês
-  - pediatra
-  - pediatria
   - autismo
+  - autista
+  - autistas
   - TEA
   - TDAH
+  - neurodivergente
+  - neurodivergentes
   - neurodesenvolvimento
   - desenvolvimento infantil
+  - primeira infância
+  - inclusão escolar
+  - educação inclusiva
+  - síndrome de down
+  - deficiência intelectual
   - fonoaudiologia
   - terapia ocupacional
-  - primeira infância
-  - amamentação
-  - vacinação infantil
+  - ABA
+  - pediatria
+  - saúde infantil
+
+locais:
+  - Pernambuco
+  - pernambucano
+  - pernambucana
+  - pernambucanos
+  - Recife
+  - recifense
+  - Olinda
+  - Jaboatão
+  - Paulista
+  - Camaragibe
+  - Cabo de Santo Agostinho
+  - São Lourenço da Mata
+  - Abreu e Lima
+  - Igarassu
+  - Ipojuca
+  - Goiana
+  - Moreno
+  - Vitória de Santo Antão
+  - Caruaru
+  - Garanhuns
+  - Gravatá
+  - Petrolina
+  - Serra Talhada
+  - Arcoverde
+  - Santa Cruz do Capibaribe
+  - Alepe
+  - Boa Viagem
 
 fontes:
+  - nome: Google Notícias — autismo e TDAH em PE
+    url: "https://news.google.com/rss/search?q=(autismo+OR+autista+OR+TEA+OR+TDAH+OR+neurodivergente)+(Pernambuco+OR+Recife+OR+Olinda+OR+Jaboat%C3%A3o+OR+Caruaru+OR+Petrolina)+when:7d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    filtrar: false       # a busca já filtra o assunto
+  - nome: Google Notícias — infância em PE
+    url: "https://news.google.com/rss/search?q=(%22desenvolvimento+infantil%22+OR+%22primeira+inf%C3%A2ncia%22+OR+%22inclus%C3%A3o+escolar%22+OR+%22educa%C3%A7%C3%A3o+inclusiva%22)+(Pernambuco+OR+Recife+OR+Olinda+OR+Jaboat%C3%A3o)+when:7d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    filtrar: false       # a busca já filtra o assunto
   - nome: Agência Brasil (Saúde)
     url: https://agenciabrasil.ebc.com.br/rss/saude/feed.xml
-    filtrar: true        # só publica se tiver palavra-chave
   - nome: Agência Brasil (Educação)
     url: https://agenciabrasil.ebc.com.br/rss/educacao/feed.xml
-    filtrar: true
-  - nome: Google Notícias — desenvolvimento infantil
-    url: "https://news.google.com/rss/search?q=%22desenvolvimento+infantil%22+OR+%22primeira+inf%C3%A2ncia%22+when:2d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
-    filtrar: false       # a própria busca já é filtrada
-  - nome: Google Notícias — autismo e TDAH
-    url: "https://news.google.com/rss/search?q=autismo+OR+TDAH+crian%C3%A7as+when:2d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
-    filtrar: false

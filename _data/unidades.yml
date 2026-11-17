@@ -1,4 +1,5 @@
 # Unidades da Kids Care (fonte: kidscarepe.com/contato)
+# foto: foto da fachada (vertical fica melhor), em assets/img/unidades/
 - nome: Boa Viagem 1
   endereco: Rua Padre Giordano, 254
   bairro: Boa Viagem, Recife - PE
@@ -6,12 +7,14 @@
   telefone: (81) 99733-7035
   whatsapp: "5581997337035"
 - nome: Boa Viagem 2
+  foto: /assets/img/unidades/boa-viagem-2.jpg
   endereco: Rua Marquês de Valença, 94
   bairro: Boa Viagem, Recife - PE
   cep: 51021-500
   telefone: (81) 99733-7035
   whatsapp: "5581997337035"
 - nome: Olinda
+  foto: /assets/img/unidades/olinda.jpg
   endereco: Rua Doutor Manoel de Barros Lama, 268
   bairro: Bairro Novo, Olinda - PE
   cep: 53030-245

@@ -70,6 +70,7 @@ content:
     fields:
       - { name: title, label: Nome do site, type: string }
       - { name: description, label: Descrição, type: text }
+      - { name: instagram_posts, label: "Links das publicações do Instagram em destaque (até 3)", type: string, list: true }
       - { name: instagram_widget, label: "Código do feed do Instagram (LightWidget, Behold…)", type: code }
       - name: redes
         label: Redes sociais

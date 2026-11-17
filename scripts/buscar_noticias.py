@@ -256,6 +256,8 @@ def main():
     if not cfg.get("ativo", True):
         print("Notícias automáticas desativadas em _data/fontes.yml"); return
     chaves = [norm(k) for k in cfg.get("palavras_chave", [])]
+    locais = [norm(k) for k in cfg.get("locais", [])]
+    tem = lambda lista, texto: any(re.search(r"\b" + re.escape(k) + r"\b", norm(texto)) for k in lista)
     limite = datetime.now(timezone.utc) - timedelta(days=int(cfg.get("dias_max", 3)))
     existentes = ids_existentes()
     vistos_titulo = {n[11:-3][:50] for n in os.listdir(POSTS) if n.endswith(".md")}
@@ -280,7 +282,7 @@ def main():
             d = data_de(it["data"]) or datetime.now(timezone.utc)
             if d < limite:
                 continue
-            if fonte.get("filtrar", True) and not any(re.search(r"\b" + re.escape(k) + r"\b", norm(titulo + " " + resumo)) for k in chaves):
+            if fonte.get("filtrar", True) and chaves and not tem(chaves, titulo + " " + resumo):
                 continue
             fid = hashlib.sha1(it["link"].encode()).hexdigest()[:16]
             chave_titulo = slug(titulo)[:50]
@@ -290,10 +292,21 @@ def main():
             candidatos.append(dict(it, titulo=titulo, resumo=resumo, veiculo=veiculo, data=d, id=fid))
 
     candidatos.sort(key=lambda x: x["data"], reverse=True)
-    novos = candidatos[: int(cfg.get("max_por_dia", 3)) + 3]
+    novos = candidatos[: int(cfg.get("max_por_dia", 3)) + 12]
+    hoje = datetime.now(FUSO).strftime("%Y-%m-%d")
+    ja_hoje = sum(1 for n in os.listdir(POSTS) if n.startswith(hoje) and "automatica: true" in open(os.path.join(POSTS, n), encoding="utf-8").read())
+    limite_hoje = max(0, int(cfg.get("max_por_dia", 3)) - ja_hoje)
+    print(f"Já publicadas hoje: {ja_hoje}. Ainda posso publicar: {limite_hoje}.")
+    if limite_hoje == 0:
+        novos = []
     publicados = 0
     for n, it in enumerate(novos):
         enriquecer(it)
+        if locais and not tem(locais, it["titulo"] + " " + (it.get("resumo") or "")):
+            print("Fora de Pernambuco, ignorada:", it["titulo"])
+            if it.get("foto_local"):
+                os.remove(os.path.join(PASTA_FOTOS, it["id"] + ".jpg"))
+            continue
         if it.get("foto_local") and foto_repetida(it["id"]):
             print("Notícia repetida (mesma foto de outra já publicada):", it["titulo"])
             os.remove(os.path.join(PASTA_FOTOS, it["id"] + ".jpg"))
@@ -326,7 +339,7 @@ foto_tentativas: 1
             f.write(corpo)
         print("Nova notícia:", nome)
         publicados += 1
-        if publicados >= int(cfg.get("max_por_dia", 3)):
+        if publicados >= limite_hoje:
             break
     print(f"{publicados} notícia(s) nova(s).")
     completar_antigas()
