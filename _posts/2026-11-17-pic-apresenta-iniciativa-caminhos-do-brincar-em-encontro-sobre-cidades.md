@@ -9,6 +9,6 @@ automatica: true
 fonte: "Prefeitura de Campinas"
 link_fonte: "https://www.campinas.sp.gov.br/noticias/pic-apresenta-iniciativa-caminhos-do-brincar-em-encontro-sobre-cidades-amigaveis-as-criancas-153587"
 fonte_id: 61593cd119e7a1e8
-foto_verificada: true
+foto_tentativas: 1
 ---
 Prefeitura Municipal de Campinas: Portal da Prefeitura. Conteúdo de Secretarias: Administração; Assistência Social, Pessoa com Deficiência e Direitos Humanos; Chefia de Gabinete do Prefeito; Comunicação; Cultura e Turismo; Desenvolvimento Econômico, Tecnologia e Inovação;…

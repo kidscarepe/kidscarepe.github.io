@@ -10,6 +10,6 @@ automatica: true
 fonte: "Portal Menina"
 link_fonte: "https://portalmenina.com.br/itajai-aprova-servico-terapeutico-em-piscina-para-criancas-e-adolescentes-com-autismo/"
 fonte_id: f516ecc3ae17b8ba
-foto_verificada: true
+foto_tentativas: 1
 ---
 

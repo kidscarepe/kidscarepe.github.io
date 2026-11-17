@@ -128,10 +128,27 @@ def meta_da_materia(url):
                 if m:
                     return html.unescape(m.group(1)).strip()
         return None
-    img = meta("og:image", "og:image:url", "twitter:image", "twitter:image:src")
+    candidatas = []
+    img = meta("og:image", "og:image:url", "og:image:secure_url", "twitter:image", "twitter:image:src")
     if img:
-        img = urllib.parse.urljoin(url, img)
-    return img, meta("og:description", "description", "twitter:description")
+        candidatas.append(img)
+    m = re.search(r'<link[^>]+rel=["\']image_src["\'][^>]*href=["\']([^"\']+)', pagina, re.I)
+    if m:
+        candidatas.append(m.group(1))
+    # Fotos dentro da própria matéria (img / amp-img), ignorando logos e ícones
+    for m in re.finditer(r'<(?:img|amp-img)\b[^>]*?\s(?:data-src|data-lazy-src|src)=["\']([^"\']+\.(?:jpe?g|png|webp)(?:\?[^"\']*)?)["\']', pagina, re.I):
+        src = m.group(1)
+        if not re.search(r"logo|icon|avatar|sprite|banner|selo|brasao|bras%C3%A3o|whatsapp|facebook|instagram|twitter|youtube|pixel|placeholder", src, re.I):
+            candidatas.append(src)
+    vistos, unicas = set(), []
+    for c in candidatas:
+        c = urllib.parse.urljoin(url, html.unescape(c))
+        if c not in vistos:
+            vistos.add(c); unicas.append(c)
+    desc = meta("og:description", "description", "twitter:description")
+    if desc and desc.count(";") >= 3:  # descrição genérica de portal
+        desc = None
+    return unicas[:8], desc
 
 
 def salvar_foto(url_img, fid):
@@ -145,7 +162,7 @@ def salvar_foto(url_img, fid):
         try:
             from PIL import Image
             im = Image.open(io.BytesIO(dados)).convert("RGB")
-            if im.width < 300:
+            if im.width < 400 or im.height < 220 or im.width / im.height > 3:
                 return None
             im.thumbnail((1200, 1200))
             im.save(destino, "JPEG", quality=80, optimize=True, progressive=True)
@@ -160,11 +177,12 @@ def salvar_foto(url_img, fid):
 def enriquecer(it):
     """Completa a notícia com link real, foto e resumo da matéria original."""
     it["link"] = resolver_google(it["link"])
-    img, desc = meta_da_materia(it["link"])
-    if not it.get("imagem") and img:
-        it["imagem"] = img
-    if it.get("imagem"):
-        it["foto_local"] = salvar_foto(it["imagem"], it["id"])
+    imgs, desc = meta_da_materia(it["link"])
+    candidatas = ([it["imagem"]] if it.get("imagem") else []) + (imgs or [])
+    for c in candidatas:
+        it["foto_local"] = salvar_foto(c, it["id"])
+        if it["foto_local"]:
+            break
     if desc and (not it.get("resumo") or len(it["resumo"]) < 40):
         it["resumo"] = limpar(desc)
     return it
@@ -232,7 +250,7 @@ def main():
     chaves = [norm(k) for k in cfg.get("palavras_chave", [])]
     limite = datetime.now(timezone.utc) - timedelta(days=int(cfg.get("dias_max", 3)))
     existentes = ids_existentes()
-    vistos_titulo = set()
+    vistos_titulo = {n[11:-3][:50] for n in os.listdir(POSTS) if n.endswith(".md")}
     candidatos = []
     for fonte in cfg.get("fontes", []):
         try:
@@ -287,7 +305,7 @@ automatica: true
 fonte: {yaml_str(it['veiculo'])}
 link_fonte: {yaml_str(it['link'])}
 fonte_id: {it['id']}
-foto_verificada: true
+foto_tentativas: 1
 ---
 {resumo}
 """
@@ -305,7 +323,10 @@ def completar_antigas(limite=6):
             break
         caminho = os.path.join(POSTS, nome)
         texto = open(caminho, encoding="utf-8").read()
-        if "automatica: true" not in texto or "foto_verificada: true" in texto:
+        if "automatica: true" not in texto or "/assets/img/auto/" not in texto:
+            continue
+        tent = int((re.search(r"^foto_tentativas:\s*(\d+)", texto, re.M) or [0, "0"])[1])
+        if tent >= 3:
             continue
         limite -= 1
         campo = lambda k: (re.search(r'^%s:\s*"?(.*?)"?\s*$' % k, texto, re.M) or [None, ""])[1]
@@ -324,7 +345,8 @@ def completar_antigas(limite=6):
             cab = re.sub(r'^description:.*$', "description: " + yaml_str(r), cab, flags=re.M)
             if not corpo.strip():
                 corpo = r + "\n"
-        cab += "\nfoto_verificada: true"
+        cab = re.sub(r"^(foto_tentativas|foto_verificada):.*\n?", "", cab, flags=re.M).rstrip("\n")
+        cab += "\nfoto_tentativas: %d" % (tent + 1)
         open(caminho, "w", encoding="utf-8").write(cab + "\n---\n" + corpo)
 
 

@@ -10,6 +10,6 @@ automatica: true
 fonte: "Portal R10"
 link_fonte: "https://www.portalr10.com/blogs-e-colunas/amp/184660/alepi-aprova-pec-que-cria-orcamento-da-primeira-infancia-no-piaui/"
 fonte_id: 45d924fccdba16b2
-foto_verificada: true
+foto_tentativas: 1
 ---
 O Plenário da Assembleia Legislativa do Piauí (Alepi) aprovou, em segunda votação, nesta terça-feira (17), a Proposta de Emenda à Constituição – PEC n. 2/2025…
