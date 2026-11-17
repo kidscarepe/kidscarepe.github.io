@@ -1,0 +1,38 @@
+# ===== Configurações principais do blog =====
+title: "Kids Care Notícias"
+description: "Notícias, dicas e novidades da Kids Care, Instituto de Desenvolvimento Infantil."
+lang: pt_BR
+# Quando o site estiver no ar, preencha com o endereço (ex.: https://kidscarepe.github.io)
+url: ""
+baseurl: ""
+logo: /assets/img/marca/logo.png
+image: /assets/img/marca/capa-padrao.jpg
+
+# Redes sociais (deixe vazio o que não usar)
+redes:
+  instagram: ""
+  facebook: ""
+  whatsapp: ""   # só números, com DDI e DDD. Ex.: 5581999999999
+  youtube: ""
+
+# Categorias exibidas no menu
+categorias_menu:
+  - Saúde
+  - Dicas
+  - Eventos
+  - Novidades
+  - Na mídia
+
+timezone: America/Recife
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+
+exclude: [README.md, COMO-USAR.md, Gemfile, Gemfile.lock, vendor, .pages.yml, scripts]

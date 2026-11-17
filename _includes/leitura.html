@@ -1,0 +1,1 @@
+{%- assign palavras = include.post.content | strip_html | number_of_words -%}{%- assign min = palavras | divided_by: 200 | plus: 1 -%}{{ min }} min de leitura

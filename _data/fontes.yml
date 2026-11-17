@@ -1,0 +1,44 @@
+# ==========================================================
+# NOTÍCIAS AUTOMÁTICAS
+# O robô roda 1x por dia, lê estas fontes e publica as notícias
+# novas que tenham alguma das palavras-chave. Cada notícia traz
+# só título + resumo curto + link para a matéria original.
+# ==========================================================
+ativo: true
+max_por_dia: 3          # máximo de notícias automáticas publicadas por dia
+dias_max: 3             # ignora notícias mais antigas que isso
+categoria: Na mídia
+
+palavras_chave:
+  - criança
+  - crianças
+  - infantil
+  - infância
+  - bebê
+  - bebês
+  - pediatra
+  - pediatria
+  - autismo
+  - TEA
+  - TDAH
+  - neurodesenvolvimento
+  - desenvolvimento infantil
+  - fonoaudiologia
+  - terapia ocupacional
+  - primeira infância
+  - amamentação
+  - vacinação infantil
+
+fontes:
+  - nome: Agência Brasil (Saúde)
+    url: https://agenciabrasil.ebc.com.br/rss/saude/feed.xml
+    filtrar: true        # só publica se tiver palavra-chave
+  - nome: Agência Brasil (Educação)
+    url: https://agenciabrasil.ebc.com.br/rss/educacao/feed.xml
+    filtrar: true
+  - nome: Google Notícias — desenvolvimento infantil
+    url: "https://news.google.com/rss/search?q=%22desenvolvimento+infantil%22+OR+%22primeira+inf%C3%A2ncia%22+when:2d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    filtrar: false       # a própria busca já é filtrada
+  - nome: Google Notícias — autismo e TDAH
+    url: "https://news.google.com/rss/search?q=autismo+OR+TDAH+crian%C3%A7as+when:2d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    filtrar: false

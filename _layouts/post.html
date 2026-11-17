@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<div class="progresso" id="progresso"></div>
+<article class="materia">
+  <header class="materia__topo">
+    <div class="hero__luz" aria-hidden="true"></div>
+    <div class="container estreito">
+      <a class="voltar" href="{{ '/' | relative_url }}">← Todas as notícias</a>
+      {% if page.categories.size > 0 %}<span class="chip">{{ page.categories | first }}</span>{% endif %}
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}<p class="linha-fina">{{ page.description }}</p>{% endif %}
+      <div class="meta meta--grande">
+        <span class="autor"><span class="avatar">{{ page.author | default: site.title | slice: 0 }}</span>{{ page.author | default: site.title }}</span>
+        <time datetime="{{ page.date | date_to_xmlschema }}">{% include data.html date=page.date %}</time>
+        <span>{% include icone.html n="relogio" %} {% include leitura.html post=page %}</span>
+      </div>
+    </div>
+  </header>
+  <div class="container estreito">
+    {% if page.image %}
+    <figure class="materia__capa">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      {% if page.legenda %}<figcaption>{{ page.legenda }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
+    <div class="materia__texto">{{ content }}</div>
+    {% if page.link_fonte %}
+    <a class="fonte" href="{{ page.link_fonte }}" target="_blank" rel="noopener">
+      <span><small>Matéria original</small><strong>Ler a notícia completa em {{ page.fonte }}</strong></span>
+      {% include icone.html n="seta" %}
+    </a>
+    {% endif %}
+    {% include compartilhar.html %}
+  </div>
+</article>
+
+<section class="container secao">
+  <h2 class="titulo-secao">Leia também</h2>
+  <div class="grade">
+    {% assign outras = site.posts | where_exp: "p", "p.url != page.url" %}
+    {% for post in outras limit: 3 %}{% include card.html post=post %}{% endfor %}
+  </div>
+</section>

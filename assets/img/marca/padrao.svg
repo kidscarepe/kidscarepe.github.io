@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Padrão geométrico inspirado no manual Kids Care -->
+  <path d="M0 0h100v100A100 100 0 0 1 0 0z" fill="#F37A6C"/>
+  <path d="M100 0a50 50 0 0 1 100 0z" fill="#A7D9D8"/>
+  <path d="M150 50a50 50 0 0 1 0 100z" fill="#18BEBC"/>
+  <circle cx="125" cy="75" r="18" fill="#F3BB84"/>
+  <path d="M0 100h100v100H0z" fill="#F3BB84"/>
+  <path d="M0 200a100 100 0 0 1 100-100v100z" fill="#18BEBC"/>
+  <path d="M100 200a50 50 0 0 1 100 0z" fill="#F37A6C"/>
+</svg>

@@ -1,0 +1,10 @@
+{%- assign link = page.url | absolute_url | url_encode -%}
+{%- assign titulo = page.title | url_encode -%}
+<div class="compartilhar">
+  <span class="compartilhar__rotulo">Compartilhe</span>
+  <a class="soc soc--whats" href="https://wa.me/?text={{ titulo }}%20{{ link }}" target="_blank" rel="noopener" aria-label="WhatsApp">{% include icone.html n="whatsapp" %}</a>
+  <a class="soc soc--face" href="https://www.facebook.com/sharer/sharer.php?u={{ link }}" target="_blank" rel="noopener" aria-label="Facebook">{% include icone.html n="facebook" %}</a>
+  <a class="soc soc--x" href="https://twitter.com/intent/tweet?text={{ titulo }}&url={{ link }}" target="_blank" rel="noopener" aria-label="X">{% include icone.html n="x" %}</a>
+  <a class="soc soc--tele" href="https://t.me/share/url?url={{ link }}&text={{ titulo }}" target="_blank" rel="noopener" aria-label="Telegram">{% include icone.html n="telegram" %}</a>
+  <button class="soc soc--copiar" data-copiar aria-label="Copiar link">{% include icone.html n="link" %}<span>Copiar link</span></button>
+</div>

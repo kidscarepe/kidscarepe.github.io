@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="hero__luz" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero__cabeca">
+      <span class="pulso">Atualizado {% include data.html date=site.time %}</span>
+      <h1 class="hero__titulo">Notícias e ideias para <em>cuidar</em> de quem está crescendo.</h1>
+    </div>
+
+    {% assign p1 = site.posts[0] %}{% assign p2 = site.posts[1] %}{% assign p3 = site.posts[2] %}
+    {% if p1 %}
+    <div class="bento">
+      <a class="bento__item bento__item--grande" href="{{ p1.url | relative_url }}">
+        <img src="{{ p1.image | default: site.image | relative_url }}" alt="">
+        <div class="bento__texto">
+          {% if p1.categories.size > 0 %}<span class="chip">{{ p1.categories | first }}</span>{% endif %}
+          <h2>{{ p1.title }}</h2>
+          <p>{{ p1.description | default: p1.excerpt | strip_html | truncate: 150 }}</p>
+          <span class="bento__ler">Ler agora {% include icone.html n="seta" %}</span>
+        </div>
+      </a>
+      {% for p in site.posts offset: 1 limit: 2 %}
+      <a class="bento__item" href="{{ p.url | relative_url }}">
+        <img src="{{ p.image | default: site.image | relative_url }}" alt="">
+        <div class="bento__texto">
+          {% if p.categories.size > 0 %}<span class="chip">{{ p.categories | first }}</span>{% endif %}
+          <h3>{{ p.title }}</h3>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="container secao">
+  <div class="secao__topo">
+    <h2 class="titulo-secao">Explore as notícias</h2>
+    <div class="filtros" role="tablist">
+      <button class="filtro ativo" data-filtro="todas">Todas</button>
+      {% for cat in site.categorias_menu %}<button class="filtro" data-filtro="{{ cat | slugify: "latin" }}">{{ cat }}</button>{% endfor %}
+    </div>
+  </div>
+  <div class="grade" id="grade">
+    {% for post in site.posts %}{% include card.html post=post %}{% endfor %}
+  </div>
+  <p class="vazio" id="vazio" hidden>Ainda não há notícias nesta categoria.</p>
+</section>

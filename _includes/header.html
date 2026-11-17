@@ -1,0 +1,22 @@
+<header class="topo">
+  <div class="topo__barra container">
+    <a class="marca" href="{{ '/' | relative_url }}"><img src="{{ site.logo | relative_url }}" alt="{{ site.title }}"></a>
+    <nav class="menu" id="menu">
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="ativo"{% endif %}>Início</a>
+      {% for cat in site.categorias_menu %}<a href="{{ '/categorias/' | relative_url }}#{{ cat | slugify: "latin" }}">{{ cat }}</a>{% endfor %}
+      <a href="{{ '/sobre/' | relative_url }}" {% if page.url == '/sobre/' %}class="ativo"{% endif %}>Sobre</a>
+    </nav>
+    <div class="topo__acoes">
+      <button class="icone-btn" data-abrir-busca aria-label="Buscar">{% include icone.html n="busca" %}<kbd>/</kbd></button>
+      <button class="icone-btn" id="tema" aria-label="Alternar modo claro/escuro">{% include icone.html n="tema" %}</button>
+      <button class="icone-btn menu-btn" aria-label="Menu" onclick="document.body.classList.toggle('menu-aberto')">{% include icone.html n="menu" %}</button>
+    </div>
+  </div>
+</header>
+
+<div class="busca" id="busca" hidden>
+  <div class="busca__caixa">
+    <div class="busca__campo">{% include icone.html n="busca" %}<input id="busca-input" type="search" placeholder="Buscar notícias, dicas, eventos…" autocomplete="off"><button data-fechar-busca>Esc</button></div>
+    <ul class="busca__resultados" id="busca-resultados"></ul>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+# Configuração do painel de edição (Pages CMS: https://app.pagescms.org)
+media:
+  input: assets/img/noticias
+  output: /assets/img/noticias
+  extensions: [jpg, jpeg, png, webp, gif]
+
+content:
+  - name: noticias
+    label: Notícias
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date, categories]
+      primary: title
+      sort: [date]
+      default: { sort: date, order: desc }
+    fields:
+      - { name: title, label: Título, type: string, required: true }
+      - { name: description, label: "Resumo (aparece na prévia das redes sociais)", type: text }
+      - { name: date, label: Data, type: date, options: { time: true } }
+      - { name: image, label: Foto de capa, type: image }
+      - { name: legenda, label: Legenda da foto, type: string }
+      - name: categories
+        label: Categoria
+        type: select
+        list: true
+        options:
+          values: [Saúde, Dicas, Eventos, Novidades, Na mídia]
+      - { name: author, label: Autor, type: string, default: Equipe Kids Care }
+      - { name: body, label: Texto da notícia, type: rich-text }
+
+  - name: sobre
+    label: Página "Sobre"
+    type: file
+    path: sobre.md
+    fields:
+      - { name: title, label: Título, type: string }
+      - { name: layout, label: Layout, type: string, hidden: true, default: page }
+      - { name: permalink, label: Endereço, type: string, hidden: true, default: /sobre/ }
+      - { name: body, label: Texto, type: rich-text }
+
+  - name: config
+    label: Configurações do site
+    type: file
+    path: _config.yml
+    fields:
+      - { name: title, label: Nome do site, type: string }
+      - { name: description, label: Descrição, type: text }
+      - name: redes
+        label: Redes sociais
+        type: object
+        fields:
+          - { name: instagram, label: "Instagram (só o @, sem o @)", type: string }
+          - { name: facebook, label: Facebook (nome da página), type: string }
+          - { name: whatsapp, label: "WhatsApp (ex.: 5581999999999)", type: string }
+          - { name: youtube, label: YouTube (nome do canal), type: string }
