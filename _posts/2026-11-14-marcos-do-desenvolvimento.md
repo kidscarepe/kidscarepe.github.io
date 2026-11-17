@@ -1,7 +1,9 @@
 ---
 title: "Marcos do desenvolvimento: o que observar até os 3 anos"
 description: "Um guia rápido sobre fala, movimento e interação para ajudar as famílias a acompanhar cada fase."
-image: /assets/img/noticias/desenvolvimento-infantil.jpg
+image: "https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=1400&q=80"
+legenda: "Foto ilustrativa: Marisa Howenstine / Unsplash"
+galeria: ["https://images.unsplash.com/photo-1600880291319-1a7499c191e8?auto=format&fit=crop&w=1400&q=80", "https://images.unsplash.com/photo-1771765767087-ce71e4a7916a?auto=format&fit=crop&w=1400&q=80"]
 categories: [Saúde]
 author: Equipe Kids Care
 ---

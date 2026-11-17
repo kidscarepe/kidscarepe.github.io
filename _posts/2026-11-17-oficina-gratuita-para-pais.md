@@ -1,8 +1,9 @@
 ---
 title: "Oficina gratuita para pais e cuidadores neste sábado"
 description: "Encontro aberto à comunidade vai abordar brincadeiras que estimulam o desenvolvimento infantil em casa."
-image: /assets/img/noticias/oficina-pais.jpg
-legenda: "Arte ilustrativa com o padrão da marca. Troque por uma foto real pelo painel."
+image: "https://images.unsplash.com/photo-1758687126227-48c2fa04b653?auto=format&fit=crop&w=1400&q=80"
+legenda: "Foto ilustrativa: Vitaly Gariev / Unsplash"
+galeria: ["https://images.unsplash.com/photo-1587323655395-b1c77a12c89a?auto=format&fit=crop&w=1400&q=80", "https://images.unsplash.com/photo-1758598738113-86c0f874c85a?auto=format&fit=crop&w=1400&q=80", "https://images.unsplash.com/photo-1549068294-04a001ee0638?auto=format&fit=crop&w=1400&q=80"]
 categories: [Eventos]
 author: Equipe Kids Care
 ---

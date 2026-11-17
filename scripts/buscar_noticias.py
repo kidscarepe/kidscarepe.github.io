@@ -12,7 +12,21 @@ from email.utils import parsedate_to_datetime
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POSTS = os.path.join(RAIZ, "_posts")
-CAPAS = ["/assets/img/auto/auto-%d.jpg" % i for i in range(1, 7)]
+# Fotos ilustrativas gratuitas (Unsplash) para notícias cuja matéria não tem foto
+CAPAS = [
+    "https://images.unsplash.com/photo-1587323655395-b1c77a12c89a?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1758598737516-ffd38ba74838?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1771765767087-ce71e4a7916a?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1537655780520-1e392ead81f2?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1758687126227-48c2fa04b653?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1758598738113-86c0f874c85a?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1643216755260-cb0bc30473c8?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1761208662734-fb46f1398551?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1600880291319-1a7499c191e8?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1646617747566-b7e784435a48?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1605627079912-97c3810a11a4?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1549068294-04a001ee0638?auto=format&fit=crop&w=1400&q=80",
+]
 FUSO = timezone(timedelta(hours=-3))  # Recife
 
 
@@ -343,7 +357,7 @@ def main():
             resumo = resumo[:280].rsplit(" ", 1)[0] + "…"
         descricao = resumo or f"Matéria publicada por {it['veiculo']}."
         capa = it.get("foto_local") or CAPAS[int(it["id"], 16) % len(CAPAS)]
-        legenda = f"Foto: reprodução/{it['veiculo']}" if it.get("foto_local") else ""
+        legenda = f"Foto: reprodução/{it['veiculo']}" if it.get("foto_local") else "Foto ilustrativa: Unsplash"
         nome = f"{d:%Y-%m-%d}-{slug(it['titulo'])}.md"
         corpo = f"""---
 title: {yaml_str(it['titulo'])}
@@ -378,7 +392,7 @@ def completar_antigas(limite=6):
             break
         caminho = os.path.join(POSTS, nome)
         texto = open(caminho, encoding="utf-8").read()
-        if "automatica: true" not in texto or "/assets/img/auto/" not in texto:
+        if "automatica: true" not in texto or ("/assets/img/auto/" not in texto and "images.unsplash.com" not in texto):
             continue
         tent = int((re.search(r"^foto_tentativas:\s*(\d+)", texto, re.M) or [0, "0"])[1])
         if tent >= 3:
