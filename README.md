@@ -39,14 +39,18 @@ Além da foto de capa, cada notícia e evento tem o campo **Fotos dentro da not�
 
 ## 5. Feed do Instagram na página inicial
 
-A página inicial tem uma área do **@kids_care_idi**. Para mostrar as fotos reais do perfil, de graça:
+A página inicial mostra o perfil do **@kids_care_idi** com as últimas publicações, direto do Instagram (sem cadastro). Se um dia ele parar de aparecer, dá para usar um widget grátis:
 
 1. Acesse **https://lightwidget.com** e crie uma conta grátis.
 2. Clique em **Connect Instagram account** e entre com a conta do Instagram da Kids Care.
 3. Escolha o layout **Grid**, 6 colunas e 1 ou 2 linhas, e copie o código em **Get code**.
 4. No painel (Pages CMS), abra **Configurações do site**, cole o código no campo **Código do feed do Instagram** e salve.
 
-Enquanto esse campo estiver vazio, aparece um cartão que leva ao perfil.
+Quando esse campo está preenchido, o widget substitui a visualização padrão.
+
+## 5b. Unidades
+
+As 3 unidades (endereço, telefone, mapa, WhatsApp e "Como chegar") ficam em `_data/unidades.yml`. Para mudar um endereço ou telefone, edite esse arquivo no GitHub (ícone do lápis).
 
 ## 6. Compartilhar nas redes
 

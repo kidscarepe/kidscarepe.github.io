@@ -1,0 +1,31 @@
+<section class="container secao" id="unidades">
+  <div class="secao__topo">
+    <div>
+      <h2 class="titulo-secao">Conheça nossas unidades</h2>
+      <p class="secao__sub">Três endereços para estar perto da sua família.</p>
+    </div>
+  </div>
+  <div class="unidades">
+    {% for u in site.data.unidades %}
+    {%- capture q -%}{{ u.endereco }}, {{ u.bairro }}, {{ u.cep }}{%- endcapture -%}
+    <article class="unidade">
+      <div class="unidade__mapa">
+        <iframe src="https://www.google.com/maps?q={{ q | url_encode }}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa da unidade {{ u.nome }}"></iframe>
+        <span class="unidade__num">{{ forloop.index }}</span>
+      </div>
+      <div class="unidade__corpo">
+        <span class="chip chip--claro">Unidade</span>
+        <h3>{{ u.nome }}</h3>
+        <ul class="evento-info">
+          <li>{% include icone.html n="local" %} <span>{{ u.endereco }}<br>{{ u.bairro }} · CEP {{ u.cep }}</span></li>
+          <li>{% include icone.html n="telefone" %} <a href="tel:+55{{ u.telefone | remove: '(' | remove: ')' | remove: ' ' | remove: '-' }}">{{ u.telefone }}</a></li>
+        </ul>
+        <div class="unidade__acoes">
+          {% if u.whatsapp %}<a class="soc soc--whats" href="https://wa.me/{{ u.whatsapp }}?text={{ 'Olá! Gostaria de informações sobre a unidade ' | append: u.nome | url_encode }}" target="_blank" rel="noopener">{% include icone.html n="whatsapp" %} WhatsApp</a>{% endif %}
+          <a class="btn-sec" href="https://www.google.com/maps/dir/?api=1&destination={{ q | url_encode }}" target="_blank" rel="noopener">{% include icone.html n="local" %} Como chegar</a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
