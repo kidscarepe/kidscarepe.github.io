@@ -3,7 +3,9 @@
     <a class="marca" href="{{ '/' | relative_url }}"><img src="{{ site.logo | relative_url }}" alt="{{ site.title }}"></a>
     <nav class="menu" id="menu">
       <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="ativo"{% endif %}>Início</a>
-      {% for cat in site.categorias_menu %}<a href="{{ '/categorias/' | relative_url }}#{{ cat | slugify: "latin" }}">{{ cat }}</a>{% endfor %}
+      <a href="{{ '/noticias/' | relative_url }}" {% if page.url == '/noticias/' or page.layout == 'post' %}class="ativo"{% endif %}>Notícias</a>
+      <a href="{{ '/eventos/' | relative_url }}" {% if page.url == '/eventos/' or page.layout == 'evento' %}class="ativo"{% endif %}>Eventos</a>
+      <a href="{{ '/noticias/' | relative_url }}#na-midia">Na mídia</a>
       <a href="{{ '/sobre/' | relative_url }}" {% if page.url == '/sobre/' %}class="ativo"{% endif %}>Sobre</a>
     </nav>
     <div class="topo__acoes">

@@ -1,0 +1,17 @@
+<section class="container secao insta">
+  <div class="insta__cabeca">
+    <div class="insta__perfil">
+      <span class="insta__avatar"><img src="{{ '/assets/img/marca/favicon.svg' | relative_url }}" alt=""></span>
+      <div><h2 class="titulo-secao">@{{ site.redes.instagram }}</h2><p>Acompanhe o dia a dia da Kids Care no Instagram</p></div>
+    </div>
+    <a class="btn-insta" href="https://instagram.com/{{ site.redes.instagram }}" target="_blank" rel="noopener">{% include icone.html n="instagram" %} Seguir</a>
+  </div>
+  {% if site.instagram_widget != "" %}
+  <div class="insta__widget">{{ site.instagram_widget }}</div>
+  {% else %}
+  <a class="insta__vazio" href="https://instagram.com/{{ site.redes.instagram }}" target="_blank" rel="noopener">
+    {% for i in (1..6) %}<span style="background-image:url('{{ '/assets/img/auto/auto-' | append: i | append: '.jpg' | relative_url }}')"></span>{% endfor %}
+    <strong>{% include icone.html n="instagram" %} Ver publicações no Instagram</strong>
+  </a>
+  {% endif %}
+</section>

@@ -1,0 +1,3 @@
+{%- assign m = include.date | date: "%-m" | minus: 1 -%}
+{%- assign meses = "JAN,FEV,MAR,ABR,MAI,JUN,JUL,AGO,SET,OUT,NOV,DEZ" | split: "," -%}
+<span class="data-bloco"><b>{{ include.date | date: "%d" }}</b><small>{{ meses[m] }}</small></span>

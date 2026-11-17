@@ -23,6 +23,13 @@
     });
   });
 
+  // Abre o filtro pelo endereço (ex.: /noticias/#na-midia)
+  function filtroDoHash() {
+    var b = location.hash && document.querySelector('[data-filtro="' + location.hash.slice(1) + '"]');
+    if (b) b.click();
+  }
+  filtroDoHash(); addEventListener('hashchange', filtroDoHash);
+
   // Copiar link
   document.querySelectorAll('[data-copiar]').forEach(function (b) {
     b.addEventListener('click', function () {

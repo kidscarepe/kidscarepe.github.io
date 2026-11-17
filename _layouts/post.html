@@ -21,10 +21,11 @@ layout: default
     {% if page.image %}
     <figure class="materia__capa">
       <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
-      {% if page.legenda %}<figcaption>{{ page.legenda }}</figcaption>{% endif %}
+      {% if page.legenda and page.legenda != "" %}<figcaption>{{ page.legenda }}</figcaption>{% endif %}
     </figure>
     {% endif %}
     <div class="materia__texto">{{ content }}</div>
+    {% include galeria.html fotos=page.galeria %}
     {% if page.link_fonte %}
     <a class="fonte" href="{{ page.link_fonte }}" target="_blank" rel="noopener">
       <span><small>Matéria original</small><strong>Ler a notícia completa em {{ page.fonte }}</strong></span>

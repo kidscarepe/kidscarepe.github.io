@@ -1,0 +1,5 @@
+{% if include.fotos and include.fotos.size > 0 %}
+<div class="galeria galeria--{{ include.fotos.size | at_most: 3 }}">
+  {% for f in include.fotos %}<a href="{{ f | relative_url }}" target="_blank" rel="noopener"><img src="{{ f | relative_url }}" alt="Foto {{ forloop.index }}" loading="lazy"></a>{% endfor %}
+</div>
+{% endif %}

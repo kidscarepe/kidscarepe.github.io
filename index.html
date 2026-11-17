@@ -35,16 +35,19 @@ layout: default
   </div>
 </section>
 
+{% assign agora = site.time | date: "%s" | minus: 86400 %}
+{% assign proximos = site.eventos | sort: "data" %}
+{% for e in proximos %}{% assign t = e.data | date: "%s" | plus: 0 %}{% if t >= agora %}
 <section class="container secao">
-  <div class="secao__topo">
-    <h2 class="titulo-secao">Explore as notícias</h2>
-    <div class="filtros" role="tablist">
-      <button class="filtro ativo" data-filtro="todas">Todas</button>
-      {% for cat in site.categorias_menu %}<button class="filtro" data-filtro="{{ cat | slugify: "latin" }}">{{ cat }}</button>{% endfor %}
-    </div>
-  </div>
-  <div class="grade" id="grade">
-    {% for post in site.posts %}{% include card.html post=post %}{% endfor %}
-  </div>
-  <p class="vazio" id="vazio" hidden>Ainda não há notícias nesta categoria.</p>
+  {% include evento-card.html evento=e destaque=true %}
 </section>
+{% break %}{% endif %}{% endfor %}
+
+<div class="container">
+  <a class="ver-todas" href="{{ '/noticias/' | relative_url }}">
+    <span><small>{{ site.posts.size }} notícias publicadas</small><strong>Ver todas as notícias</strong></span>
+    {% include icone.html n="seta" %}
+  </a>
+</div>
+
+{% include instagram.html %}

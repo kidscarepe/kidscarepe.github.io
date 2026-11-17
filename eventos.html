@@ -1,0 +1,25 @@
+---
+layout: default
+title: Eventos
+permalink: /eventos/
+---
+{% assign agora = site.time | date: "%s" | minus: 86400 %}
+{% assign todos = site.eventos | sort: "data" %}
+<section class="hero hero--curto">
+  <div class="hero__luz" aria-hidden="true"></div>
+  <div class="container"><h1 class="titulo-pagina">Eventos</h1><p class="linha-fina">Oficinas, encontros e atividades da Kids Care para as famílias.</p></div>
+</section>
+<section class="container secao secao--colada">
+  <h2 class="titulo-secao">Próximos</h2>
+  <div class="grade grade--eventos">
+    {% assign tem = false %}
+    {% for e in todos %}{% assign t = e.data | date: "%s" | plus: 0 %}{% if t >= agora %}{% assign tem = true %}{% include evento-card.html evento=e %}{% endif %}{% endfor %}
+  </div>
+  {% unless tem %}<p class="vazio">Nenhum evento agendado no momento. Acompanhe pelo Instagram.</p>{% endunless %}
+  {% assign passados = "" | split: "" %}
+  {% for e in todos reversed %}{% assign t = e.data | date: "%s" | plus: 0 %}{% if t < agora %}{% assign passados = passados | push: e %}{% endif %}{% endfor %}
+  {% if passados.size > 0 %}
+  <h2 class="titulo-secao" style="margin-top:48px">Já aconteceram</h2>
+  <div class="grade grade--eventos">{% for e in passados %}{% include evento-card.html evento=e %}{% endfor %}</div>
+  {% endif %}
+</section>

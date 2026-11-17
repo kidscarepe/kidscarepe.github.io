@@ -29,33 +29,52 @@ Tudo aqui é **gratuito**: o site fica no GitHub Pages e as notícias são publi
 
 Para **editar ou apagar**, abra a notícia na lista e use **Save** ou **Delete**.
 
-## 3. Compartilhar nas redes
+## 3. Eventos
+
+No painel, clique em **Eventos → Add an entry** e preencha nome, data e hora, local, link de inscrição e a arte de divulgação. O próximo evento aparece em destaque na página inicial, com botões de inscrição, "Salvar na agenda" (Google Agenda) e "Ver no mapa". Depois que a data passa, ele vai sozinho para "Já aconteceram".
+
+## 4. Fotos dentro das notícias
+
+Além da foto de capa, cada notícia e evento tem o campo **Fotos dentro da notícia (galeria)**: envie quantas fotos quiser e elas aparecem em grade no fim do texto. Também dá para inserir fotos no meio do texto pelo editor.
+
+## 5. Feed do Instagram na página inicial
+
+A página inicial tem uma área do **@kids_care_idi**. Para mostrar as fotos reais do perfil, de graça:
+
+1. Acesse **https://lightwidget.com** e crie uma conta grátis.
+2. Clique em **Connect Instagram account** e entre com a conta do Instagram da Kids Care.
+3. Escolha o layout **Grid**, 6 colunas e 1 ou 2 linhas, e copie o código em **Get code**.
+4. No painel (Pages CMS), abra **Configurações do site**, cole o código no campo **Código do feed do Instagram** e salve.
+
+Enquanto esse campo estiver vazio, aparece um cartão que leva ao perfil.
+
+## 6. Compartilhar nas redes
 
 Cada notícia tem botões de **WhatsApp, Facebook, X, Telegram e Copiar link**. Para Instagram, copie o link e cole na bio, nos stories (figurinha de link) ou na legenda.
 
-## 4. Trocar logo, cores e redes sociais
+## 7. Trocar logo, cores e redes sociais
 
 - **Redes sociais e nome do site**: no painel, em **Configurações do site**.
 - **Logo**: substitua o arquivo `assets/img/marca/logo.png` (PNG com fundo transparente).
 - **Cores**: estão no topo de `assets/css/style.css`, na seção "IDENTIDADE VISUAL" (paleta oficial: #FAEADA, #F3BB84, #F37A6C, #A7D9D8, #18BEBC).
 
-## 5. Notícias automáticas
+## 8. Notícias automáticas
 
 Todo dia às 8h (horário de Recife) um robô gratuito do GitHub (GitHub Actions) lê as fontes de notícias listadas em `_data/fontes.yml` e publica até 3 notícias novas sobre infância, desenvolvimento infantil, autismo, TDAH e saúde das crianças, na categoria **Na mídia**.
 
-- Cada notícia automática traz **título, resumo curto e o link para a matéria original**, com o nome do veículo. O texto completo não é copiado (respeita os direitos dos jornais).
+- Cada notícia automática traz **título, resumo curto, a foto da matéria original e o link para ela**, com o nome do veículo. O texto completo não é copiado (respeita os direitos dos jornais).
 - **Mudar fontes, palavras-chave ou a quantidade por dia:** edite `_data/fontes.yml` direto no GitHub (ícone do lápis).
 - **Pausar:** troque `ativo: true` por `ativo: false` no mesmo arquivo.
 - **Rodar agora:** no GitHub, aba **Actions → Publicar site e buscar notícias → Run workflow**.
 - **Apagar uma notícia automática:** pelo painel (Pages CMS), como qualquer outra.
 
-## 6. Recursos do site
+## 9. Recursos do site
 
 - Destaques em mosaico na página inicial (as 3 notícias mais recentes).
 - Busca instantânea (ícone da lupa ou tecla `/`).
 - Filtro por categoria, tempo de leitura e barra de progresso de leitura.
 - Modo claro e escuro (segue o celular da pessoa ou o botão da lua).
 
-## 7. Notícias de exemplo
+## 10. Notícias de exemplo
 
 O blog vem com 3 notícias de exemplo com artes do padrão da marca. Apague ou edite pelo painel quando publicar as reais.

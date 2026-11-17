@@ -1,0 +1,21 @@
+---
+layout: default
+title: Notícias
+permalink: /noticias/
+---
+<section class="hero hero--curto">
+  <div class="hero__luz" aria-hidden="true"></div>
+  <div class="container">
+    <h1 class="titulo-pagina">Notícias</h1>
+    <div class="filtros" role="tablist">
+      <button class="filtro ativo" data-filtro="todas">Todas</button>
+      {% for cat in site.categorias_menu %}<button class="filtro" data-filtro="{{ cat | slugify: "latin" }}">{{ cat }}</button>{% endfor %}
+    </div>
+  </div>
+</section>
+<section class="container secao secao--colada">
+  <div class="grade" id="grade">
+    {% for post in site.posts %}{% include card.html post=post %}{% endfor %}
+  </div>
+  <p class="vazio" id="vazio" hidden>Ainda não há notícias nesta categoria.</p>
+</section>

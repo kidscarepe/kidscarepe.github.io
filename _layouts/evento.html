@@ -1,0 +1,36 @@
+---
+layout: default
+---
+{%- assign inicio = page.data | date: "%Y%m%dT%H%M00" -%}
+{%- if page.data_fim -%}{%- assign fim = page.data_fim | date: "%Y%m%dT%H%M00" -%}{%- else -%}{%- assign fim = page.data | date: "%s" | plus: 7200 | date: "%Y%m%dT%H%M00" -%}{%- endif -%}
+{%- capture onde -%}{{ page.local }}{% if page.endereco %}, {{ page.endereco }}{% endif %}{%- endcapture -%}
+<article class="materia">
+  <header class="materia__topo">
+    <div class="hero__luz" aria-hidden="true"></div>
+    <div class="container estreito">
+      <a class="voltar" href="{{ '/eventos/' | relative_url }}">← Todos os eventos</a>
+      <span class="chip">Evento</span>
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}<p class="linha-fina">{{ page.description }}</p>{% endif %}
+    </div>
+  </header>
+  <div class="container estreito">
+    <div class="evento-painel">
+      {% include data-curta.html date=page.data %}
+      <ul class="evento-info evento-info--grande">
+        <li>{% include icone.html n="relogio" %} {% include data.html date=page.data %}, {{ page.data | date: "%-Hh%M" | replace: "h00", "h" }}{% if page.data_fim %} às {{ page.data_fim | date: "%-Hh%M" | replace: "h00", "h" }}{% endif %}</li>
+        {% if page.local %}<li>{% include icone.html n="local" %} <span><strong>{{ page.local }}</strong>{% if page.endereco %}<br>{{ page.endereco }}{% endif %}</span></li>{% endif %}
+        {% if page.preco %}<li>🎟️ {{ page.preco }}</li>{% endif %}
+      </ul>
+      <div class="evento-acoes">
+        {% if page.inscricao_link %}<a class="btn-cta" href="{{ page.inscricao_link }}" target="_blank" rel="noopener">{{ page.inscricao_texto | default: "Quero participar" }} {% include icone.html n="seta" %}</a>{% endif %}
+        <a class="btn-sec" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text={{ page.title | url_encode }}&dates={{ inicio }}/{{ fim }}&ctz=America/Recife&location={{ onde | url_encode }}&details={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener">{% include icone.html n="calendario" %} Salvar na agenda</a>
+        {% if page.local %}{% unless page.local contains "definir" %}<a class="btn-sec" href="https://www.google.com/maps/search/?api=1&query={{ onde | url_encode }}" target="_blank" rel="noopener">{% include icone.html n="local" %} Ver no mapa</a>{% endunless %}{% endif %}
+      </div>
+    </div>
+    {% if page.image %}<figure class="materia__capa"><img src="{{ page.image | relative_url }}" alt="{{ page.title }}"></figure>{% endif %}
+    <div class="materia__texto">{{ content }}</div>
+    {% include galeria.html fotos=page.galeria %}
+    {% include compartilhar.html %}
+  </div>
+</article>

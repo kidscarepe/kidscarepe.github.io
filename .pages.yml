@@ -1,7 +1,7 @@
 # Configuração do painel de edição (Pages CMS: https://app.pagescms.org)
 media:
-  input: assets/img/noticias
-  output: /assets/img/noticias
+  input: assets/img
+  output: /assets/img
   extensions: [jpg, jpeg, png, webp, gif]
 
 content:
@@ -21,6 +21,7 @@ content:
       - { name: date, label: Data, type: date, options: { time: true } }
       - { name: image, label: Foto de capa, type: image }
       - { name: legenda, label: Legenda da foto, type: string }
+      - { name: galeria, label: "Fotos dentro da notícia (galeria)", type: image, options: { multiple: true } }
       - name: categories
         label: Categoria
         type: select
@@ -29,6 +30,28 @@ content:
           values: [Saúde, Dicas, Eventos, Novidades, Na mídia]
       - { name: author, label: Autor, type: string, default: Equipe Kids Care }
       - { name: body, label: Texto da notícia, type: rich-text }
+
+  - name: eventos
+    label: Eventos
+    type: collection
+    path: _eventos
+    filename: "{primary}.md"
+    view:
+      fields: [title, data]
+      primary: title
+    fields:
+      - { name: title, label: Nome do evento, type: string, required: true }
+      - { name: description, label: "Resumo (aparece na prévia das redes sociais)", type: text }
+      - { name: data, label: Data e hora de início, type: date, options: { time: true }, required: true }
+      - { name: data_fim, label: Data e hora de término, type: date, options: { time: true } }
+      - { name: local, label: Local, type: string }
+      - { name: endereco, label: Endereço, type: string }
+      - { name: preco, label: "Valor / observações (ex.: Gratuito)", type: string }
+      - { name: inscricao_link, label: Link de inscrição, type: string }
+      - { name: inscricao_texto, label: Texto do botão de inscrição, type: string, default: Quero participar }
+      - { name: image, label: Arte ou foto de divulgação, type: image }
+      - { name: galeria, label: Fotos do evento (galeria), type: image, options: { multiple: true } }
+      - { name: body, label: Descrição completa, type: rich-text }
 
   - name: sobre
     label: Página "Sobre"
@@ -47,6 +70,7 @@ content:
     fields:
       - { name: title, label: Nome do site, type: string }
       - { name: description, label: Descrição, type: text }
+      - { name: instagram_widget, label: "Código do feed do Instagram (LightWidget, Behold…)", type: code }
       - name: redes
         label: Redes sociais
         type: object

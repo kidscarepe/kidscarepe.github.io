@@ -1,0 +1,16 @@
+{%- assign e = include.evento -%}
+<a class="evento-card {% if include.destaque %}evento-card--destaque{% endif %}" href="{{ e.url | relative_url }}">
+  <div class="evento-card__img">
+    <img src="{{ e.image | default: '/assets/img/auto/auto-3.jpg' | relative_url }}" alt="" loading="lazy">
+    {% include data-curta.html date=e.data %}
+  </div>
+  <div class="evento-card__corpo">
+    {% if include.destaque %}<span class="pulso">Próximo evento</span>{% endif %}
+    <h3>{{ e.title }}</h3>
+    <ul class="evento-info">
+      <li>{% include icone.html n="relogio" %} {% include data.html date=e.data %} · {{ e.data | date: "%-Hh%M" | replace: "h00", "h" }}{% if e.data_fim %} às {{ e.data_fim | date: "%-Hh%M" | replace: "h00", "h" }}{% endif %}</li>
+      {% if e.local %}<li>{% include icone.html n="local" %} {{ e.local }}</li>{% endif %}
+    </ul>
+    {% if include.destaque %}<p>{{ e.description }}</p><span class="bento__ler">Ver detalhes {% include icone.html n="seta" %}</span>{% endif %}
+  </div>
+</a>

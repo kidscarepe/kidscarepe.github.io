@@ -10,10 +10,15 @@ image: /assets/img/marca/capa-padrao.jpg
 
 # Redes sociais (deixe vazio o que não usar)
 redes:
-  instagram: ""
+  instagram: "kids_care_idi"
   facebook: ""
   whatsapp: ""   # só números, com DDI e DDD. Ex.: 5581999999999
   youtube: ""
+
+# Feed do Instagram na página inicial.
+# Cole aqui o código do widget gratuito (LightWidget, Behold, etc.).
+# Enquanto estiver vazio, aparece um cartão com link para o perfil.
+instagram_widget: ""
 
 # Categorias exibidas no menu
 categorias_menu:
@@ -31,8 +36,15 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+collections:
+  eventos:
+    output: true
+    permalink: /eventos/:title/
+
 defaults:
   - scope: { path: "", type: posts }
     values: { layout: post }
+  - scope: { path: "", type: eventos }
+    values: { layout: evento }
 
 exclude: [README.md, COMO-USAR.md, Gemfile, Gemfile.lock, vendor, .pages.yml, scripts]
