@@ -369,3 +369,8 @@ button { font: inherit; color: inherit; }
 @media (max-width: 900px) { .qs-hero__grade, .qs-mv, .qs-valores { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .qs-card, .qs-apresentacao { padding: 24px; } }
 @media (max-width: 1080px) and (min-width: 901px) { .menu a { padding: 10px 11px; font-size: 14px; } .icone-btn kbd { display: none; } }
+
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+.qs-card h2 .linha { display: block; }
+.qs-card p, .qs-valor p, .qs-apresentacao p { hyphens: manual; }

@@ -23,13 +23,13 @@ permalink: /quem-somos/
   <div class="qs-mv">
     <article class="qs-card qs-card--missao">
       <small>Nossa missão</small>
-      <h2>{{ q.missao.titulo }}</h2>
+      <h2>{% assign partes = q.missao.titulo | split: ". " %}{% for x in partes %}<span class="linha">{{ x }}{% unless forloop.last %}.{% endunless %}</span>{% endfor %}</h2>
       <p>{{ q.missao.texto }}</p>
       <strong>{{ q.missao.destaque }}</strong>
     </article>
     <article class="qs-card qs-card--visao">
       <small>Nossa visão</small>
-      <h2>{{ q.visao.titulo }}</h2>
+      <h2>{% assign partes = q.visao.titulo | split: ". " %}{% for x in partes %}<span class="linha">{{ x }}{% unless forloop.last %}.{% endunless %}</span>{% endfor %}</h2>
       <p>{{ q.visao.texto }}</p>
       <strong>{{ q.visao.destaque }}</strong>
     </article>

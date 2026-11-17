@@ -16,9 +16,8 @@
   </div>
   <script async src="https://www.instagram.com/embed.js"></script>
   {% else %}
-  <a class="insta__vazio" href="https://instagram.com/{{ site.redes.instagram }}" target="_blank" rel="noopener">
-    {% for i in (1..6) %}<span style="background-image:url('{{ '/assets/img/auto/auto-' | append: i | append: '.jpg' | relative_url }}')"></span>{% endfor %}
-    <strong>{% include icone.html n="instagram" %} Ver publicações no Instagram</strong>
-  </a>
+  <div class="insta__embed">
+    <iframe src="https://www.instagram.com/{{ site.redes.instagram }}/embed/" loading="lazy" title="Feed do Instagram @{{ site.redes.instagram }}" scrolling="no" allowtransparency="true"></iframe>
+  </div>
   {% endif %}
 </section>
