@@ -1,6 +1,7 @@
 # Unidades da Kids Care (fonte: kidscarepe.com/contato)
 # foto: foto da fachada (vertical fica melhor), em assets/img/unidades/
 - nome: Boa Viagem 1
+  foto: /assets/img/unidades/boa-viagem-1.jpg   # arte "Nova fachada em breve" (trocar pela foto quando a reforma acabar)
   endereco: Rua Padre Giordano, 254
   bairro: Boa Viagem, Recife - PE
   cep: 51021-490
