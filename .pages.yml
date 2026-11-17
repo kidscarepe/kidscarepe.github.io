@@ -53,15 +53,41 @@ content:
       - { name: galeria, label: Fotos do evento (galeria), type: image, options: { multiple: true } }
       - { name: body, label: Descrição completa, type: rich-text }
 
-  - name: sobre
-    label: Página "Sobre"
+  - name: quem_somos
+    label: "Página Quem somos"
     type: file
-    path: sobre.md
+    path: _data/quem_somos.yml
     fields:
-      - { name: title, label: Título, type: string }
-      - { name: layout, label: Layout, type: string, hidden: true, default: page }
-      - { name: permalink, label: Endereço, type: string, hidden: true, default: /sobre/ }
-      - { name: body, label: Texto, type: rich-text }
+      - { name: lema, label: Lema (3 palavras), type: string, list: true }
+      - { name: apresentacao, label: Apresentação (parágrafos), type: text, list: true }
+      - { name: especialidades, label: Especialidades, type: string, list: true }
+      - name: missao
+        label: Missão
+        type: object
+        fields:
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: Texto, type: text }
+          - { name: destaque, label: Frase de destaque, type: string }
+      - name: visao
+        label: Visão
+        type: object
+        fields:
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: Texto, type: text }
+          - { name: destaque, label: Frase de destaque, type: string }
+      - name: valores
+        label: Valores
+        type: object
+        list: true
+        fields:
+          - { name: grupo, label: Grupo, type: string }
+          - name: itens
+            label: Valores do grupo
+            type: object
+            list: true
+            fields:
+              - { name: titulo, label: Valor, type: string }
+              - { name: texto, label: Descrição, type: text }
 
   - name: config
     label: Configurações do site

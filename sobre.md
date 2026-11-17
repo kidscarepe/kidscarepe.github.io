@@ -1,8 +1,6 @@
 ---
-layout: page
-title: Sobre a Kids Care
+layout: null
 permalink: /sobre/
+sitemap: false
 ---
-Este é o canal de notícias da **Kids Care, Instituto de Desenvolvimento Infantil**. Aqui publicamos novidades, dicas de saúde e cuidado infantil, eventos e comunicados para as famílias.
-
-*(Edite este texto pelo painel: Páginas → Sobre.)*
+<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={{ '/quem-somos/' | relative_url }}"><link rel="canonical" href="{{ '/quem-somos/' | absolute_url }}"><a href="{{ '/quem-somos/' | relative_url }}">Quem somos</a>

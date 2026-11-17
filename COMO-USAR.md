@@ -52,6 +52,10 @@ Quando esse campo está preenchido, o widget substitui a visualização padrão.
 
 As 3 unidades (foto da fachada, endereço, telefone, WhatsApp e "Como chegar") ficam em `_data/unidades.yml`; as fotos ficam em `assets/img/unidades/`. Para mudar um endereço ou telefone, edite esse arquivo no GitHub (ícone do lápis).
 
+## 5c. Quem somos
+
+A página **Quem somos** (missão, visão, valores e especialidades) é editada no painel em **Página Quem somos**, ou no arquivo `_data/quem_somos.yml`.
+
 ## 6. Compartilhar nas redes
 
 Cada notícia tem botões de **WhatsApp, Facebook, X, Telegram e Copiar link**. Para Instagram, copie o link e cole na bio, nos stories (figurinha de link) ou na legenda.

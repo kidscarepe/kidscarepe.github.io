@@ -335,3 +335,37 @@ button { font: inherit; color: inherit; }
 .unidade__semfoto small { font-size: 13px; }
 .insta__posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start; }
 .insta__posts .instagram-media { min-width: 0 !important; width: 100% !important; margin: 0 !important; border-radius: var(--raio) !important; }
+
+/* Quem somos */
+.qs-hero { padding-bottom: 24px; }
+.qs-hero__grade { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+.qs-lema { font-size: clamp(44px, 6.5vw, 84px); font-weight: 800; line-height: 1; margin-top: 20px; }
+.qs-lema span { display: block; }
+.qs-lema span:nth-child(1) { color: var(--kc-coral); } .qs-lema span:nth-child(2) { color: var(--kc-turquesa); } .qs-lema span:nth-child(3) { color: var(--texto); }
+.qs-apresentacao { background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio); padding: 32px; box-shadow: var(--sombra); }
+.qs-apresentacao h2 { font-size: 28px; }
+.qs-apresentacao p { color: var(--texto-2); margin: 0 0 12px; }
+.qs-mv { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.qs-card { border-radius: var(--raio); padding: 36px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 6px; }
+.qs-card small { font: 700 13px var(--fonte-texto); letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+.qs-card h2 { font-size: clamp(30px, 3.4vw, 42px); margin: 6px 0 10px; }
+.qs-card p { margin: 0 0 22px; font-size: 16.5px; flex: 1; }
+.qs-card strong { position: relative; z-index: 1; align-self: flex-start; font: 600 16px var(--fonte-titulo); padding: 12px 20px; border-radius: 999px; }
+.qs-card--missao { background: var(--kc-turquesa); color: #fff; }
+.qs-card--missao strong { background: #fff; color: #0E6F6E; }
+.qs-card--visao { background: var(--kc-creme); color: #22363A; border: 1px solid var(--borda); }
+.qs-card--visao strong { background: var(--kc-coral); color: #fff; }
+.qs-card::after { content: ""; position: absolute; right: -40px; bottom: -40px; width: 150px; height: 150px; background: url("../img/marca/padrao.svg") center / contain no-repeat; opacity: .35; }
+.qs-valores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.qs-grupo { background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio); padding: 28px; box-shadow: var(--sombra); }
+.qs-grupo__num { font: 800 15px var(--fonte-titulo); color: var(--kc-coral); }
+.qs-grupo h3 { font-size: 26px; margin: 6px 0 18px; }
+.qs-valor { border-left: 4px solid var(--kc-coral); padding-left: 16px; margin-bottom: 18px; }
+.qs-valor h4 { font-size: 18px; margin: 0 0 4px; }
+.qs-valor p { margin: 0; color: var(--texto-2); font-size: 15px; }
+.qs-esp { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.qs-esp span { padding: 12px 20px; border-radius: 999px; background: var(--superficie); border: 1px solid var(--borda); font: 600 16px var(--fonte-titulo); box-shadow: var(--sombra); }
+.qs-esp span:nth-child(3n+1) { border-color: var(--kc-turquesa); } .qs-esp span:nth-child(3n+2) { border-color: var(--kc-coral); } .qs-esp span:nth-child(3n) { border-color: var(--kc-pessego); }
+@media (max-width: 900px) { .qs-hero__grade, .qs-mv, .qs-valores { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .qs-card, .qs-apresentacao { padding: 24px; } }
+@media (max-width: 1080px) and (min-width: 901px) { .menu a { padding: 10px 11px; font-size: 14px; } .icone-btn kbd { display: none; } }

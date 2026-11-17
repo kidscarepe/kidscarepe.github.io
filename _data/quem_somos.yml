@@ -1,0 +1,43 @@
+# Conteúdo da página "Quem somos" (fonte: kidscarepe.com e PDF Missão, Visão e Valores)
+lema: ["Potencialidades.", "Autonomia.", "Inclusão."]
+apresentacao:
+  - "A Kids Care – Instituto de Desenvolvimento Infantil oferece um trabalho terapêutico interdisciplinar, individualizado e funcional, dedicado ao desenvolvimento integral de crianças e adolescentes."
+  - "Compreendemos que o desenvolvimento de uma criança com algum prejuízo no neurodesenvolvimento é um assunto complexo, que muitas vezes exige o suporte de diversos profissionais trabalhando de forma integrada."
+  - "Nossa equipe leva em conta a complexidade das necessidades da criança e de seus familiares, com um cuidado personalizado que vai da elaboração e do planejamento até a aplicação de um tratamento singular."
+especialidades:
+  - Terapia ABA
+  - Terapia Ocupacional
+  - Fonoaudiologia
+  - Fisioterapia
+  - Psicologia
+  - Psicopedagogia
+  - Psicomotricidade
+  - Musicoterapia
+  - Neuropediatria
+missao:
+  titulo: "Desenvolver possibilidades."
+  texto: "Promover o desenvolvimento das potencialidades de crianças e adolescentes com atrasos ou condições relacionadas ao neurodesenvolvimento, ou com deficiência, ampliando sua autonomia no cotidiano e favorecendo sua participação e inclusão nos diferentes ambientes da vida, por meio de cuidado multidisciplinar individualizado e acolhedor, em parceria com as famílias e a escola."
+  destaque: "Cada pessoa, suas potencialidades."
+visao:
+  titulo: "Mais acesso. Mais participação."
+  texto: "Ampliar o acesso de crianças e adolescentes com atrasos ou condições relacionadas ao neurodesenvolvimento, ou com deficiência, e de suas famílias a um cuidado multidisciplinar acolhedor, com intervenções e metodologias clínicas baseadas em evidências científicas, favorecendo o desenvolvimento de suas potencialidades, a autonomia e a inclusão nos diferentes ambientes da vida."
+  destaque: "Evidências científicas orientam o cuidado."
+valores:
+  - grupo: "Cuidar com respeito."
+    itens:
+      - titulo: "Ética e respeito"
+        texto: "Atuar com responsabilidade, transparência e respeito à dignidade, à privacidade e aos direitos de cada criança, adolescente e família."
+      - titulo: "Cuidado, carinho e acolhimento"
+        texto: "Construir relações de confiança, oferecendo um ambiente seguro e sensível às necessidades e às formas de expressão de cada pessoa."
+  - grupo: "Aprender em parceria."
+    itens:
+      - titulo: "Individualização e bem-estar"
+        texto: "Adaptar o cuidado e as estratégias de ensino às necessidades, potencialidades, interesses e ritmo de aprendizagem de cada paciente, priorizando seu bem-estar."
+      - titulo: "Parceria e aprendizagem com as famílias"
+        texto: "Acolher e envolver as famílias no processo terapêutico, compartilhando conhecimentos e estratégias que favoreçam o uso das habilidades desenvolvidas nas sessões em situações do cotidiano, respeitando a realidade de cada família."
+  - grupo: "Incluir no cotidiano."
+    itens:
+      - titulo: "Inclusão e parceria com a escola"
+        texto: "Colaborar com professores e equipes pedagógicas para favorecer a aprendizagem e a participação em ambientes acolhedores, respeitosos e flexíveis, apoiando a adaptação de materiais, atividades e estratégias às necessidades de cada criança e adolescente."
+      - titulo: "Autonomia e participação na vida adulta"
+        texto: "Apoiar adolescentes no desenvolvimento de habilidades para atividades cotidianas e instrumentais da vida diária, ampliando suas possibilidades de escolha, participação social e inclusão em atividades laborais e no mercado de trabalho, com os apoios necessários e respeito aos seus interesses."
