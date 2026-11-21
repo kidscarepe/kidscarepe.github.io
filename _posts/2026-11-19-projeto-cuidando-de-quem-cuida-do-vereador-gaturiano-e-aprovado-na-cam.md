@@ -10,6 +10,6 @@ automatica: true
 fonte: "Jean Brito Notícias"
 link_fonte: "https://jbritonoticias.com.br/2026/11/projeto-cuidando-de-quem-cuida-do-vereador-gaturiano-e-aprovado-na-camara-de-petrolina/"
 fonte_id: eccd9c57b8f6bd71
-foto_tentativas: 2
+foto_tentativas: 3
 ---
 A Câmara Municipal de Petrolina aprovou, na sessão ordinária desta quinta-feira (19/11), o projeto de lei do vereador Gaturiano Cigano, subscrito pela
