@@ -10,6 +10,6 @@ automatica: true
 fonte: "Prefeitura de Jaboatão dos Guararapes (PE)"
 link_fonte: "https://jaboatao.pe.gov.br/noticia/71249"
 fonte_id: db32726bedb0b22b
-foto_tentativas: 2
+foto_tentativas: 3
 ---
 
