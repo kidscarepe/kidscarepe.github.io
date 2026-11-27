@@ -10,6 +10,6 @@ automatica: true
 fonte: "Rede Observatório"
 link_fonte: "https://redeobservatorio.com.br/noticia/7836/olinda-ganha-projeto-de-praia-acessivel-para-pcds"
 fonte_id: 1756c14954b9b99b
-foto_tentativas: 2
+foto_tentativas: 3
 ---
 
